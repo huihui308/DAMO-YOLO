@@ -34,10 +34,10 @@ Copy classes.txt to current directory and execute labelme2coco.py
     ├── data
     └── labels
 
-YOLO 格式的数据集转化为 COCO 格式的数据集
+Labelme 格式的数据集转化为 COCO 格式的数据集
 --root_dir 输入根路径
 --save_path 保存文件的名字(没有random_split时使用)
---random_split 有则会随机划分数据集，然后再分别保存为3个文件。
+--random_split 有则会随机划分数据集，然后再分别保存为3个json文件。
 --split_by_file 按照 ./train.txt ./val.txt ./test.txt 来对数据集进行划分。
 """
 import cv2
