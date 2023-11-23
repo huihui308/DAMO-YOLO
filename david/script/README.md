@@ -39,5 +39,5 @@ Labelme 格式的数据集转化为 COCO 格式的数据集
 
 Check coco dataset and annotate it on images.
 ```
-$ rm -rf result;python3 check_coco.py --coco_dir=./../../datasets/yizhuang
+$ rm -rf result;python3 check_coco.py --coco_dir=./../../datasets/yizhuang --class_type=traffic7
 ```

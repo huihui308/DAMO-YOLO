@@ -17,7 +17,7 @@ If the images and json files in different directory, you must execute following 
     ├── classes.txt
     ├── data
     └── labels
-classes.txt 是类的声明，一行一类。
+classes.txt 是类的声明，一行一类，由当前目录 classes7.txt 拷贝即可。
 data 目录包含所有图片 (目前支持png和jpg格式数据)
 labels 目录包含所有标签(与图片同名的txt格式数据)
 
@@ -117,6 +117,7 @@ def train_test_val_split_by_files(img_paths, root_dir):
     return img_split[0], img_split[1], img_split[2]
 
 
+"""
 def get_class_id(class_str:str)->int:
     if class_str == 'person':
         return 0
@@ -140,6 +141,24 @@ def get_class_id(class_str:str)->int:
         return 9
     elif class_str == 'Y':
         return 10
+    else:
+        return -1
+"""
+def get_class_id(class_str:str)->int:
+    if class_str == 'person':
+        return 0
+    elif class_str in ('bicycle', 'motor', 'motorbike'):
+        return 1
+    elif class_str == 'tricycle':
+        return 2
+    elif class_str in ('car', 'bus', 'truck'):
+        return 3
+    elif class_str == 'R':
+        return 4
+    elif class_str == 'G':
+        return 5
+    elif class_str == 'Y':
+        return 6
     else:
         return -1
 
@@ -223,7 +242,7 @@ def labelme2coco(args):
                 # 标签序号从0开始计算, coco2017数据集标号混乱，不管它了。
                 cls_id = get_class_id(one_obj['label'])
                 if cls_id == -1:
-                    if one_obj['label'] not in ('B'):
+                    if one_obj['label'] not in ('B', 'plate', 'plate+'):
                         prRed('\'{}\' class not define, contine'.format(one_obj['label']))
                     #os._exit(0)
                     continue

@@ -1,0 +1,7 @@
+person
+rider
+tricycle
+car
+R
+G
+Y

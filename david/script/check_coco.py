@@ -21,6 +21,7 @@ except:
 # s: single layer plate;    d: double layer plate;
 PLATE_CLASSES = (  # always index 0
     's', 'd')
+TRAFFIC7_CLASSES = ('person', 'rider', 'tricycle', 'car', 'R', 'G', 'Y')
 TRAFFIC11_CLASSES = (  # always index 0
     'person', 'bicycle', 'motor', 'tricycle', 
     'car', 'bus', 'truck', 'plate', 
@@ -61,6 +62,8 @@ def main_func(args = None):
 
     if args.class_type == "plate":
         class_type = PLATE_CLASSES
+    elif args.class_type == "traffic7":
+        class_type = TRAFFIC7_CLASSES
     else:
         class_type = TRAFFIC11_CLASSES
     if not os.path.exists(args.save_dir):
